@@ -26,7 +26,6 @@ C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\MvcMovie.RazorCore
 C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
-C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
@@ -160,3 +159,9 @@ C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Movies
 C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Movies\Details.cshtml.g.cs
 C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Movies\Edit.cshtml.g.cs
 C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Movies\Index.cshtml.g.cs
+C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\MovieReviews\Create.cshtml.g.cs
+C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\MovieReviews\Delete.cshtml.g.cs
+C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\MovieReviews\Details.cshtml.g.cs
+C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\MovieReviews\Edit.cshtml.g.cs
+C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\MovieReviews\Index.cshtml.g.cs
+C:\Users\Laur\source\repos\MvcMovie\MvcMovie\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs

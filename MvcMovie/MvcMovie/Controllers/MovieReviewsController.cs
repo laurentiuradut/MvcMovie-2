@@ -10,91 +10,62 @@ using MvcMovie.Models;
 
 namespace MvcMovie.Controllers
 {
-    public class MoviesController : Controller
+    public class MovieReviewsController : Controller
     {
         private readonly MvcMovieContext _context;
 
-        public MoviesController(MvcMovieContext context)
+        public MovieReviewsController(MvcMovieContext context)
         {
             _context = context;
         }
 
-        // GET: Movies
-        public async Task<IActionResult> Index(int? pageNumber)
-
+        // GET: MovieReviews
+        public async Task<IActionResult> Index()
         {
-            
-            var movies = from m in _context.Movie
-                           select m;
-
- 
-
-            int pageSize = 3;
-            return View(await PaginatedList<Movie>.CreateAsync(movies.AsNoTracking(), pageNumber ?? 1, pageSize));
+            return View(await _context.Review.ToListAsync());
         }
 
-        // GET: Movies/Details/5
-        public async Task<IActionResult> Details(int? id,String name,String review)
+        // GET: MovieReviews/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var movie = await _context.Movie
+            var movieReview = await _context.Review
                 .FirstOrDefaultAsync(m => m.Id == id);
-
-            var reviews = _context.Review.Where(p => p.Movie == movie).ToList();
-
-           if(name !=null && review != null)
-            {
-                _context.Add(new MovieReview { Name = name, Review = review, Movie = movie });
-                await _context.SaveChangesAsync();
-            }
-
-            if (movie == null)
+            if (movieReview == null)
             {
                 return NotFound();
             }
 
-            if (reviews == null)
-            {
-                return NotFound();
-            }
-
-            ReviewDto dto = new ReviewDto();
-            dto.Movie = movie;
-            dto.ReviewsList = reviews;
-            name = null;
-            review = null;
-
-            return View(dto);
-
+            return View(movieReview);
         }
 
-        // GET: Movies/Create
+        // GET: MovieReviews/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Movies/Create
+        // POST: MovieReviews/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Name,Review,ReviewDate")] MovieReview movieReview)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(movie);
+                _context.Add(movieReview);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(movie);
+            return View(movieReview);
         }
 
-        // GET: Movies/Edit/5
+        // GET: MovieReviews/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -102,22 +73,22 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FindAsync(id);
-            if (movie == null)
+            var movieReview = await _context.Review.FindAsync(id);
+            if (movieReview == null)
             {
                 return NotFound();
             }
-            return View(movie);
+            return View(movieReview);
         }
 
-        // POST: Movies/Edit/5
+        // POST: MovieReviews/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Review,ReviewDate")] MovieReview movieReview)
         {
-            if (id != movie.Id)
+            if (id != movieReview.Id)
             {
                 return NotFound();
             }
@@ -126,12 +97,12 @@ namespace MvcMovie.Controllers
             {
                 try
                 {
-                    _context.Update(movie);
+                    _context.Update(movieReview);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MovieExists(movie.Id))
+                    if (!MovieReviewExists(movieReview.Id))
                     {
                         return NotFound();
                     }
@@ -142,10 +113,10 @@ namespace MvcMovie.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(movie);
+            return View(movieReview);
         }
 
-        // GET: Movies/Delete/5
+        // GET: MovieReviews/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -153,30 +124,30 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var movie = await _context.Movie
+            var movieReview = await _context.Review
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (movie == null)
+            if (movieReview == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            return View(movieReview);
         }
 
-        // POST: Movies/Delete/5
+        // POST: MovieReviews/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var movie = await _context.Movie.FindAsync(id);
-            _context.Movie.Remove(movie);
+            var movieReview = await _context.Review.FindAsync(id);
+            _context.Review.Remove(movieReview);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MovieExists(int id)
+        private bool MovieReviewExists(int id)
         {
-            return _context.Movie.Any(e => e.Id == id);
+            return _context.Review.Any(e => e.Id == id);
         }
     }
 }
